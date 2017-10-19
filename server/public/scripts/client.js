@@ -14,10 +14,11 @@ function f1(){
 } // end doc ready
 
 function deleteKoala() {
+  var koalaId = $(this).data("id");
 console.log("deleted Koala :(",  $(this).data("id"));
 $.ajax ({
   type: 'DELETE',
-  url: '/koalas',
+  url: '/koalas/' + koalaId,
 }).done(function(response){
   console.log(response);
   getKoalas();
