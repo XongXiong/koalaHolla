@@ -45,6 +45,7 @@ function getKoalas(){
     type: 'GET',
     success: function( data ){
       console.log( 'got some koalas: ', data );
+      appendKoalas(data);
     } // end success
   }); //end ajax
   // display on DOM with buttons that allow edit of each
@@ -61,4 +62,15 @@ function saveKoala( newKoala ){
       console.log( 'got some koalas: ', data );
     } // end success
   }); //end ajax
+}
+
+function appendKoalas(koalas){
+  $('#viewKoalas').empty();
+  //loop through products and append to dom
+  for (var i = 0; i < koalas.length; i++ ){
+    var koala = koala[i];
+    var $trow = $('#viewKoalas').append('<tr></tr>');
+    //if it doesnt work check out quotes?
+    $('$trow').append('<td>' + koala.name + '</td> <td>' + koala. age + '</td> <td>' + koala. gender + '< td > <button> "ready for Transfer" </button> </td > <button> "Delete" </button> <td>');
+  }
 }
