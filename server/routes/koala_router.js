@@ -103,7 +103,7 @@ router.put('/:id', function(req,res){
       res.sendStatus(500);
     } else {
       // We connected to the db!!!!! pool -1
-      var queryText = 'UPDATE "koalas" SET "ready" = "true" WHERE "id" = $1;';
+      var queryText = 'UPDATE "koalas" SET "ready" = \'true\' WHERE "id" = $1;';
       db.query(queryText, [koalaId], function (errorMakingQuery, result) {
         // We have received an error or result at this point
         done(); // pool +1
