@@ -8,13 +8,13 @@ function f1(){
   getKoalas();
   // add koala button click
   $( '#addButton' ).on( 'click', addKoala);
-  $( '#deleteButton' ).on( 'click', deleteKoala);
+  $( '#viewKoalas' ).on( 'click', ".deleteButton", deleteKoala);
   $( '#markReadyButton' ).on( 'click', markReady);
 
 } // end doc ready
 
 function deleteKoala() {
-console.log()
+console.log("deleted Koala :(")
 }
 
 function markReady() {
