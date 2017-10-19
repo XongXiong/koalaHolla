@@ -31,13 +31,13 @@ $(this).parent().parent().remove();
 function markReady() {
   var koalaId = $(this).data("id");  
 console.log('super ready koalas!');
+  $(this).remove();
 $.ajax ({
   type: "PUT",
   url: '/koalas/'+ koalaId,
 }).done(function(response){
   console.log(response);
   getKoalas();
-  $(this).remove();
 });
 }
 
@@ -102,4 +102,8 @@ function appendKoalas(koalas){
     $("#readyForTransferInIn").val('');
     $("#notesIn").val('');
   }
+}
+
+funtion hideReady(){
+  
 }
