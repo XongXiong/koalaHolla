@@ -1,0 +1,31 @@
+.container{
+    height: auto;
+    background-color: rgb(44, 80, 164)
+}
+
+.container{
+    color: snow
+}
+
+th, td{ 
+    padding: 5px; 
+} 
+
+
+.container img{
+    text-align: center;
+    height: 20%;
+    width: 20%;
+}
+
+img{
+    margin: 2%
+}
+
+body{
+    margin: 10px
+}
+
+#address{
+    margin: 2%
+}
