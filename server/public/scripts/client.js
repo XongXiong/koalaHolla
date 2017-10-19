@@ -8,13 +8,22 @@ function f1(){
   getKoalas();
   // add koala button click
   $( '#addButton' ).on( 'click', addKoala);
-  $( '#deleteButton' ).on( 'click', deleteKoala);
+  $( '#viewKoalas' ).on( 'click', ".deleteButton", deleteKoala);
   $( '#markReadyButton' ).on( 'click', markReady);
 
 } // end doc ready
 
 function deleteKoala() {
-
+console.log("deleted Koala :(",  $(this).data("id"));
+$.ajax ({
+  type: 'DELETE',
+  url: '/koalas',
+}).done(function(response){
+  console.log(response);
+  getKoalas();
+}).fail(function(error){
+  console.log('Sad Koalas :(');
+});
 }
 
 function markReady() {
@@ -27,12 +36,14 @@ function addKoala(){
   // NOT WORKING YET :(
   // using a test object
   var objectToSend = {
-    name: 'testName',
-    age: 'testName',
-    gender: 'testName',
-    readyForTransfer: 'testName',
-    notes: 'testName',
+    name: $('#nameIn').val(),
+    age: $('#ageIn').val(),
+    gender: $('#genderIn').val(),
+    readyForTransfer: $('#readyForTransferIn').val(),
+    notes: $('#notesIn').val()
   };
+
+  console.log(objectToSend);
   // call saveKoala with the new obejct
   saveKoala( objectToSend );
 } //end addButton on click
@@ -45,6 +56,7 @@ function getKoalas(){
     type: 'GET',
     success: function( data ){
       console.log( 'got some koalas: ', data );
+      appendKoalas(data);
     } // end success
   }); //end ajax
   // display on DOM with buttons that allow edit of each
@@ -59,6 +71,19 @@ function saveKoala( newKoala ){
     data: newKoala,
     success: function( data ){
       console.log( 'got some koalas: ', data );
+      getKoalas();
+
     } // end success
   }); //end ajax
+}
+
+function appendKoalas(koalas){
+  $('#viewKoalas').empty();
+  //loop through products and append to dom
+  for (var i = 0; i < koalas.length; i++ ){
+    //added an 's'
+    var koala = koalas[i];
+    var $trow = $('#viewKoalas').append('<tr></tr>');
+    $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>'+ koala.notes +'</td> <td>' + koala.ready + '</td> <td> <button class = "markReady" data-id =" ' + koala.id + '">  Ready for Transfer </button> </td> <td> <button class= "deleteButton" data-id= "' + koala.id + '"> Delete </button> </td>');
+  }
 }
