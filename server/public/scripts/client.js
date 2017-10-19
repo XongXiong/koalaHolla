@@ -14,7 +14,7 @@ function f1(){
 } // end doc ready
 
 function deleteKoala() {
-
+console.log()
 }
 
 function markReady() {
@@ -71,6 +71,6 @@ function appendKoalas(koalas){
     //added an 's'
     var koala = koalas[i];
     var $trow = $('#viewKoalas').append('<tr></tr>');
-    $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>'+ koala.notes +'</td> <td> <button class = "markReady" data-id =" ' + koala.id + '> "ready for Transfer" </button> </td> <td> <button class= "deleteButton" data-id= "' + koala.id + '"Delete" </button> </td>');
+    $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>'+ koala.notes +'</td> <td>' + koala.ready + '</td> <td> <button class = "markReady" data-id =" ' + koala.id + '">  Ready for Transfer </button> </td> <td> <button class= "deleteButton" data-id= "' + koala.id + '"> Delete </button> </td>');
   }
 }
