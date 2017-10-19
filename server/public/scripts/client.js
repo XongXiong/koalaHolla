@@ -8,13 +8,22 @@ function f1(){
   getKoalas();
   // add koala button click
   $( '#addButton' ).on( 'click', addKoala);
-  $( '#deleteButton' ).on( 'click', deleteKoala);
+  $( '#viewKoalas' ).on( 'click', ".deleteButton", deleteKoala);
   $( '#markReadyButton' ).on( 'click', markReady);
 
 } // end doc ready
 
 function deleteKoala() {
-console.log()
+console.log("deleted Koala :(",  $(this).data("id"));
+$.ajax ({
+  type: 'DELETE',
+  url: '/koalas',
+}).done(function(response){
+  console.log(response);
+  getKoalas();
+}).fail(function(error){
+  console.log('Sad Koalas :(');
+});
 }
 
 function markReady() {
