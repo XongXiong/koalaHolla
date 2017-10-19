@@ -3,7 +3,7 @@ id serial PRIMARY KEY,
 name varchar(50),
 age integer,
 gender varchar(50),
-ready boolean,
+ready varchar(50),
 notes varchar(100));
 
 INSERT INTO "koalas" ("name", "age", "gender", "ready", "notes")

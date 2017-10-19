@@ -51,7 +51,7 @@ router.post('/', function(req, res){
     } else {
       // We connected to the db!!!!! pool -1
       var queryText = 'INSERT INTO "koalas" ("name", "age", "gender", "ready", "notes") VALUES ($1, $2, $3, $4, $5);';
-      db.query(queryText, [koala.name, koala.age, koala.gender, koala.ready, koala.notes], function (errorMakingQuery, result) {
+      db.query(queryText, [koala.name, koala.age, koala.gender, koala.readyForTransfer, koala.notes], function (errorMakingQuery, result) {
         // We have received an error or result at this point
         done(); // pool +1
         if (errorMakingQuery) {
