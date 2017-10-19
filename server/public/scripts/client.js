@@ -5,11 +5,11 @@ $( document ).ready( f1 );
 function f1(){
   console.log( 'JQ' );
   // load existing koalas on page load
-  getKoalas();
   // add koala button click
   $( '#addButton' ).on( 'click', addKoala);
   $( '#viewKoalas' ).on( 'click', ".deleteButton", deleteKoala);
   $( '#viewKoalas' ).on( 'click', ".markReady",markReady);
+  getKoalas();
 
 } // end doc ready
 
@@ -29,15 +29,16 @@ $(this).parent().parent().remove();
 }
 
 function markReady() {
+  var koalaId = $(this).data("id");  
 console.log('super ready koalas!');
-$(this).remove();
-
 $.ajax ({
   type: "UPDATE",
-  url: '/koalas',
-})
-
-}
+  url: '/koalas/'+ koalaId,
+}).done(function(response){
+  console.log(response);
+  getKoalas();
+  $(this).remove();
+});
 
 function addKoala(){
   console.log( 'in addButton on click' );
@@ -95,4 +96,4 @@ function appendKoalas(koalas){
     var $trow = $('#viewKoalas').append('<tr></tr>');
     $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>'+ koala.notes +'</td> <td>' + koala.ready + '</td> <td> <button class = "markReady" data-id =" ' + koala.id + '">  Ready for Transfer </button> </td> <td> <button class= "deleteButton" data-id= "' + koala.id + '"> Delete </button> </td>');
   }
-}
+}}
