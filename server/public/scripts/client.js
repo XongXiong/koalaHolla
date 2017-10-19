@@ -109,31 +109,9 @@ function appendKoalas(koalas){
       if (koala.ready == false) {
       $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>' + koala.notes + '</td>  <td> <button type=button class="markReady transfer btn btn-primary" data-id =" ' + koala.id + '">  Ready for Transfer </button> </td> <td> <button type="button" class= "deleteButton btn btn-danger" data-id= "' + koala.id + '"> Delete </button> </td>');
       } else {
-        $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>' + koala.notes + '</td>  <td> Ready for Transfer! </td> <td> <button type="button" class= "deleteButton btn btn-danger" data-id= "' + koala.id + '"> Delete </button> </td>');
+        $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>' + koala.notes + '</td>  <td> '+ koala.name +' is ready for Transfer! </td> <td> <button type="button" class= "deleteButton btn btn-danger" data-id= "' + koala.id + '"> Delete </button> </td>');
 
       }
     
-  //hideReady();
-}
-}
-/*function hideReady() {
-  //array of rows:
-  var $rows = $('#viewKoalas').children();
-  for (i = 0; i < $rows.length; i++) {
-    var thisCell = $rows[i];
-    console.log(thisCell);
-    var theseCells = $(thisRow).children();
-    // console.log(theseCells);
-    var isReady = $(theseCells[4]).text();
-    // console.log(isReady);
-    if (isReady === 'true') {
-      console.log('to be removed');
-    }
   }
-*/
-
-  // var isReady = $('.readyfreddy').text();
-  // if (isReady === 'true') {
-  //   console.log($('.readyfreddy').parent().parent().children[5]);
-  // }
-//}
+}
