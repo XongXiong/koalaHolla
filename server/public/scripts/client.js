@@ -9,7 +9,7 @@ function f1(){
   // add koala button click
   $( '#addButton' ).on( 'click', addKoala);
   $( '#viewKoalas' ).on( 'click', ".deleteButton", deleteKoala);
-  $( '#markReadyButton' ).on( 'click', markReady);
+  $( '#viewKoalas' ).on( 'click', ".markReady",markReady);
 
 } // end doc ready
 
@@ -24,9 +24,17 @@ $.ajax ({
 }).fail(function(error){
   console.log('Sad Koalas :(');
 });
+$(this).parent().parent().remove();
 }
 
 function markReady() {
+console.log('super ready koalas!');
+$(this).remove();
+
+$.ajax ({
+  type: "UPDATE",
+  url: '/koalas',
+})
 
 }
 
