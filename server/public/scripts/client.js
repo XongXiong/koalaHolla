@@ -32,13 +32,14 @@ function markReady() {
   var koalaId = $(this).data("id");  
 console.log('super ready koalas!');
 $.ajax ({
-  type: "UPDATE",
+  type: "PUT",
   url: '/koalas/'+ koalaId,
 }).done(function(response){
   console.log(response);
   getKoalas();
   $(this).remove();
 });
+}
 
 function addKoala(){
   console.log( 'in addButton on click' );
@@ -88,6 +89,7 @@ function saveKoala( newKoala ){
 }
 
 function appendKoalas(koalas){
+  console.log('in append koalas!');
   $('#viewKoalas').empty();
   //loop through products and append to dom
   for (var i = 0; i < koalas.length; i++ ){
@@ -96,4 +98,4 @@ function appendKoalas(koalas){
     var $trow = $('#viewKoalas').append('<tr></tr>');
     $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>' + koala.notes + '</td> <td>' + koala.ready + '</td> <td> <button type=button class="markReady btn btn-primary" data-id =" ' + koala.id + '">  Ready for Transfer </button> </td> <td> <button type="button" class= "deleteButton btn btn-danger" data-id= "' + koala.id + '"> Delete </button> </td>');
   }
-}}
+}
