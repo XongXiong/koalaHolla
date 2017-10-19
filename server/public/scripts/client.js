@@ -1,27 +1,41 @@
 console.log( 'js' );
 
-$( document ).ready( function(){
+$( document ).ready( f1 );
+
+function f1(){
   console.log( 'JQ' );
   // load existing koalas on page load
   getKoalas();
-
   // add koala button click
-  $( '#addButton' ).on( 'click', function(){
-    console.log( 'in addButton on click' );
-    // get user input and put in an object
-    // NOT WORKING YET :(
-    // using a test object
-    var objectToSend = {
-      name: 'testName',
-      age: 'testName',
-      gender: 'testName',
-      readyForTransfer: 'testName',
-      notes: 'testName',
-    };
-    // call saveKoala with the new obejct
-    saveKoala( objectToSend );
-  }); //end addButton on click
-}); // end doc ready
+  $( '#addButton' ).on( 'click', addKoala);
+  $( '#deleteButton' ).on( 'click', deleteKoala);
+  $( '#markReadyButton' ).on( 'click', markReady);
+
+} // end doc ready
+
+function deleteKoala() {
+
+}
+
+function markReady() {
+
+}
+
+function addKoala(){
+  console.log( 'in addButton on click' );
+  // get user input and put in an object
+  // NOT WORKING YET :(
+  // using a test object
+  var objectToSend = {
+    name: 'testName',
+    age: 'testName',
+    gender: 'testName',
+    readyForTransfer: 'testName',
+    notes: 'testName',
+  };
+  // call saveKoala with the new obejct
+  saveKoala( objectToSend );
+} //end addButton on click
 
 function getKoalas(){
   console.log( 'in getKoalas' );
