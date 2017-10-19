@@ -65,3 +65,5 @@ router.post('/', function(req, res){
     }
   }); // END POOL
 });
+
+module.exports = router;
