@@ -68,9 +68,10 @@ function appendKoalas(koalas){
   $('#viewKoalas').empty();
   //loop through products and append to dom
   for (var i = 0; i < koalas.length; i++ ){
-    var koala = koala[i];
+    //added an 's'
+    var koala = koalas[i];
     var $trow = $('#viewKoalas').append('<tr></tr>');
     //if it doesnt work check out quotes?
-    $('$trow').append('<td>' + koala.name + '</td> <td>' + koala. age + '</td> <td>' + koala. gender + '< td > <button> "ready for Transfer" </button> </td > <button> "Delete" </button> <td>');
+    $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '< td > <button> "ready for Transfer" </button> </td > <button> "Delete" </button> <td>');
   }
 }
