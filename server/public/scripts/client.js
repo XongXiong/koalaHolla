@@ -5,11 +5,11 @@ $( document ).ready( f1 );
 function f1(){
   console.log( 'JQ' );
   // load existing koalas on page load
-  getKoalas();
   // add koala button click
   $( '#addButton' ).on( 'click', addKoala);
   $( '#viewKoalas' ).on( 'click', ".deleteButton", deleteKoala);
-  $( '#markReadyButton' ).on( 'click', markReady);
+  $( '#viewKoalas' ).on( 'click', ".markReady",markReady);
+  getKoalas();
 
 } // end doc ready
 
@@ -25,10 +25,20 @@ $.ajax ({
 }).fail(function(error){
   console.log('Sad Koalas :(');
 });
+$(this).parent().parent().remove();
 }
 
 function markReady() {
-
+  var koalaId = $(this).data("id");  
+console.log('super ready koalas!');
+$.ajax ({
+  type: "PUT",
+  url: '/koalas/'+ koalaId,
+}).done(function(response){
+  console.log(response);
+  getKoalas();
+  $(this).remove();
+});
 }
 
 function addKoala(){
@@ -79,6 +89,7 @@ function saveKoala( newKoala ){
 }
 
 function appendKoalas(koalas){
+  console.log('in append koalas!');
   $('#viewKoalas').empty();
   //loop through products and append to dom
   for (var i = 0; i < koalas.length; i++ ){
