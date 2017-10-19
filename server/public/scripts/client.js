@@ -31,13 +31,13 @@ $(this).parent().parent().remove();
 function markReady() {
   var koalaId = $(this).data("id");  
 console.log('super ready koalas!');
+  $(this).remove();
 $.ajax ({
   type: "PUT",
   url: '/koalas/'+ koalaId,
 }).done(function(response){
   console.log(response);
   getKoalas();
-  $(this).remove();
 });
 }
 
@@ -98,4 +98,8 @@ function appendKoalas(koalas){
     var $trow = $('#viewKoalas').append('<tr></tr>');
     $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>' + koala.notes + '</td> <td>' + koala.ready + '</td> <td> <button type=button class="markReady btn btn-primary" data-id =" ' + koala.id + '">  Ready for Transfer </button> </td> <td> <button type="button" class= "deleteButton btn btn-danger" data-id= "' + koala.id + '"> Delete </button> </td>');
   }
+}
+
+funtion hideReady(){
+  
 }
