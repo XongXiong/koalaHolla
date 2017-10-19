@@ -96,7 +96,7 @@ function appendKoalas(koalas){
     //added an 's'
     var koala = koalas[i];
     var $trow = $('#viewKoalas').append('<tr></tr>');
-    $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>' + koala.notes + '</td> <td>' + koala.ready + '</td> <td> <button type=button class="markReady btn btn-primary" data-id =" ' + koala.id + '">  Ready for Transfer </button> </td> <td> <button type="button" class= "deleteButton btn btn-danger" data-id= "' + koala.id + '"> Delete </button> </td>');
+    $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>' + koala.notes + '</td> <td class= "readyfreddy" >' + koala.ready + '</td> <td> <button type=button class="markReady btn btn-primary" data-id =" ' + koala.id + '">  Ready for Transfer </button> </td> <td> <button type="button" class= "deleteButton btn btn-danger" data-id= "' + koala.id + '"> Delete </button> </td>');
     $(#nameIn).val('');
     $(#ageIn).val('');
     $(#readyForTransferInIn).val('');
@@ -104,6 +104,9 @@ function appendKoalas(koalas){
   }
 }
 
-funtion hideReady(){
-  
+function hideReady(){
+  var isReady = $('.readyfreddy').text();
+  if(isReady === 'true'){
+    console.log($('.readyfreddy').parent().parent().children[5]);
+  }
 }
