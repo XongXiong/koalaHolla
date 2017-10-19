@@ -71,6 +71,6 @@ function appendKoalas(koalas){
     var koala = koala[i];
     var $trow = $('#viewKoalas').append('<tr></tr>');
     //if it doesnt work check out quotes?
-    $('$trow').append('<td>' + koala.name + '</td> <td>' + koala. age + '</td> <td>' + koala. gender + '< td > <button> "ready for Transfer" </button> </td > <button> "Delete" </button> <td>');
+    $('$trow').append('<td>' + koala.name + '</td> <td>' + koala. age + '</td> <td>' + koala.gender + '< td > <button class = "markReady" data-id =" ' + koala.id + '> "ready for Transfer" </button> </td > <button class= "deleteButton" data-id= "' + koala.id + > "Delete" </button> <td>');
   }
 }
