@@ -7,9 +7,9 @@
     color: snow
 }
 
-th, td{ 
-    padding: 8px; 
-} 
+th, td{
+    padding: 8px;
+}
 
 
 .container img{
@@ -30,3 +30,7 @@ body{
     margin: 2%
 }
 
+.inputBorder{
+  border-color: red;
+  background-color: lightyellow; 
+}

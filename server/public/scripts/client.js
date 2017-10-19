@@ -49,6 +49,17 @@ function addKoala(){
   // get user input and put in an object
   // NOT WORKING YET :(
   // using a test object
+  var readyToGo = $('#readyForTransferIn');
+  $(readyToGo).removeClass('inputBorder');
+
+  if (readyToGo.val() != 'true' && readyToGo.val() != 'false') {
+    alert('must enter boolean!');
+    $(readyToGo).val('');
+    $(readyToGo).focus();
+    $(readyToGo).addClass('inputBorder');
+    return;
+  }
+
   var objectToSend = {
     name: $('#nameIn').val(),
     age: $('#ageIn').val(),
@@ -106,12 +117,12 @@ function appendKoalas(koalas){
       //added an 's'
       var koala = koalas[i];
       var $trow = $('#viewKoalas').append('<tr></tr>');
-      if (koala.ready == false) {
+      if (koala.ready == 'false') {
       $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>' + koala.notes + '</td>  <td> <button type=button class="markReady transfer btn btn-primary" data-id =" ' + koala.id + '">  Ready for Transfer </button> </td> <td> <button type="button" class= "deleteButton btn btn-danger" data-id= "' + koala.id + '"> Delete </button> </td>');
       } else {
         $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>' + koala.notes + '</td>  <td> '+ koala.name +' is ready for Transfer! </td> <td> <button type="button" class= "deleteButton btn btn-danger" data-id= "' + koala.id + '"> Delete </button> </td>');
 
       }
-    
+
   }
 }
