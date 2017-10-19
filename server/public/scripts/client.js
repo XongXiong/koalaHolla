@@ -21,15 +21,17 @@ $.ajax ({
   url: '/koalas/' + koalaId,
 }).done(function(response){
   console.log(response);
+  $(this).parent().parent().remove();
   getKoalas();
 }).fail(function(error){
   console.log('Sad Koalas :(');
 });
-$(this).parent().parent().remove();
+
+
 }
 
 function markReady() {
-  var koalaId = $(this).data("id");  
+  var koalaId = $(this).data("id");
 console.log('super ready koalas!');
   $(this).remove();
 $.ajax ({
@@ -103,7 +105,7 @@ function appendKoalas(koalas){
     $("#notesIn").val('');
   }
 }
-
-funtion hideReady(){
-  
-}
+//
+// funtion hideReady(){
+//
+// }
