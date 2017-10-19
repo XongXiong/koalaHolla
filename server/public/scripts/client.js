@@ -10,6 +10,7 @@ function f1(){
   $( '#viewKoalas' ).on( 'click', ".deleteButton", deleteKoala);
   $( '#viewKoalas' ).on( 'click', ".markReady",markReady);
   getKoalas();
+  //hideReady();
 
 } // end doc ready
 
@@ -90,25 +91,49 @@ function saveKoala( newKoala ){
   }); //end ajax
 }
 
+//var j = 0;
+
 function appendKoalas(koalas){
   console.log('in append koalas!');
   $('#viewKoalas').empty();
+  $("#nameIn").val('');
+  $("#ageIn").val('');
+  $("#genderIn").val('');
+  $("#readyForTransferIn").val('');
+  $("#notesIn").val('');
   //loop through products and append to dom
-  for (var i = 0; i < koalas.length; i++ ){
-    //added an 's'
-    var koala = koalas[i];
-    var $trow = $('#viewKoalas').append('<tr></tr>');
-    $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>' + koala.notes + '</td> <td>' + koala.ready + '</td> <td> <button type=button class="markReady btn btn-primary" data-id =" ' + koala.id + '">  Ready for Transfer </button> </td> <td> <button type="button" class= "deleteButton btn btn-danger" data-id= "' + koala.id + '"> Delete </button> </td>');
-    $("#nameIn").val('');
-    $("#ageIn").val('');
-    $("#genderIn").val('');
-    $("#readyForTransferIn").val('');
-    $("#notesIn").val('');
-  }
+    for (var i = 0; i < koalas.length; i++) {
+      //added an 's'
+      var koala = koalas[i];
+      var $trow = $('#viewKoalas').append('<tr></tr>');
+      if (koala.ready == false) {
+      $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>' + koala.notes + '</td> <td>' + koala.ready + '</td> <td> <button type=button class="markReady transfer btn btn-primary" data-id =" ' + koala.id + '">  Ready for Transfer </button> </td> <td> <button type="button" class= "deleteButton btn btn-danger" data-id= "' + koala.id + '"> Delete </button> </td>');
+      } else {
+        $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>' + koala.notes + '</td> <td>' + koala.ready + '</td> <td> </td> <td> <button type="button" class= "deleteButton btn btn-danger" data-id= "' + koala.id + '"> Delete </button> </td>');
+
+      }
+    
+  //hideReady();
 }
-function hideReady() {
-  var isReady = $('.readyfreddy').text();
-  if (isReady === 'true') {
-    console.log($('.readyfreddy').parent().parent().children[5]);
-  }
 }
+/*function hideReady() {
+  //array of rows:
+  var $rows = $('#viewKoalas').children();
+  for (i = 0; i < $rows.length; i++) {
+    var thisCell = $rows[i];
+    console.log(thisCell);
+    var theseCells = $(thisRow).children();
+    // console.log(theseCells);
+    var isReady = $(theseCells[4]).text();
+    // console.log(isReady);
+    if (isReady === 'true') {
+      console.log('to be removed');
+    }
+  }
+*/
+
+  // var isReady = $('.readyfreddy').text();
+  // if (isReady === 'true') {
+  //   console.log($('.readyfreddy').parent().parent().children[5]);
+  // }
+//}
