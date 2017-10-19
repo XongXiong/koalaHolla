@@ -41,7 +41,6 @@ router.get('/', function(req, res){
 router.post('/', function(req, res){
   var koala = req.body; // This the data we sent
   console.log(koala); // Has a name and cost
-
   // Attempt to connect to the database
   pool.connect(function (errorConnectingToDb, db, done) {
     if (errorConnectingToDb) {
@@ -70,7 +69,6 @@ router.delete('/:id', function(req, res){
   var koalaId = req.params.id;
   console.log(koalaId);
   // res.sendStatus(200);
-
   pool.connect(function (errorConnectingToDb, db, done) {
     if (errorConnectingToDb) {
       // There was an error and no connection was made
@@ -79,6 +77,33 @@ router.delete('/:id', function(req, res){
     } else {
       // We connected to the db!!!!! pool -1
       var queryText = 'DELETE FROM "koalas" WHERE "id"=$1';
+      db.query(queryText, [koalaId], function (errorMakingQuery, result) {
+        // We have received an error or result at this point
+        done(); // pool +1
+        if (errorMakingQuery) {
+          console.log('Error making query', errorMakingQuery);
+          res.sendStatus(500);
+        } else {
+          // Send back success!
+          res.sendStatus(201);
+        }
+      }); // END QUERY
+    }
+  }); // END POOL
+});
+
+router.put('/:id', function(req,res){
+  var koalaId = req.params.id;
+  console.log(koalaId);
+  //res.sendStatus(200);
+  pool.connect(function (errorConnectingToDb, db, done) {
+    if (errorConnectingToDb) {
+      // There was an error and no connection was made
+      console.log('Error connecting', errorConnectingToDb);
+      res.sendStatus(500);
+    } else {
+      // We connected to the db!!!!! pool -1
+      var queryText = 'UPDATE "koalas" SET "ready" = "true" WHERE "id" = $1;';
       db.query(queryText, [koalaId], function (errorMakingQuery, result) {
         // We have received an error or result at this point
         done(); // pool +1
