@@ -49,6 +49,17 @@ function addKoala(){
   // get user input and put in an object
   // NOT WORKING YET :(
   // using a test object
+  var readyToGo = $('#readyForTransferIn');
+  $(readyToGo).removeClass('inputBorder');
+
+  if (readyToGo.val() != 'true' && readyToGo.val() != 'false') {
+    alert('must enter boolean!');
+    $(readyToGo).val('');
+    $(readyToGo).focus();
+    $(readyToGo).addClass('inputBorder');
+    return;
+  }
+
   var objectToSend = {
     name: $('#nameIn').val(),
     age: $('#ageIn').val(),
@@ -106,47 +117,12 @@ function appendKoalas(koalas){
       //added an 's'
       var koala = koalas[i];
       var $trow = $('#viewKoalas').append('<tr></tr>');
-<<<<<<< HEAD
-      console.log(koala.ready);
       if (koala.ready == 'false') {
-      $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>' + koala.notes + '</td> <td>' + koala.ready + '</td> <td> <button type=button class="markReady transfer btn btn-primary" data-id =" ' + koala.id + '">  Ready for Transfer </button> </td> <td> <button type="button" class= "deleteButton btn btn-danger" data-id= "' + koala.id + '"> Delete </button> </td>');
-
-=======
-      if (koala.ready == false) {
       $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>' + koala.notes + '</td>  <td> <button type=button class="markReady transfer btn btn-primary" data-id =" ' + koala.id + '">  Ready for Transfer </button> </td> <td> <button type="button" class= "deleteButton btn btn-danger" data-id= "' + koala.id + '"> Delete </button> </td>');
->>>>>>> 3435005714447d967f93291142c7415af906a038
       } else {
         $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>' + koala.notes + '</td>  <td> '+ koala.name +' is ready for Transfer! </td> <td> <button type="button" class= "deleteButton btn btn-danger" data-id= "' + koala.id + '"> Delete </button> </td>');
 
       }
-<<<<<<< HEAD
 
-  //hideReady();
-}
-}
-/*function hideReady() {
-  //array of rows:
-  var $rows = $('#viewKoalas').children();
-  for (i = 0; i < $rows.length; i++) {
-    var thisCell = $rows[i];
-    console.log(thisCell);
-    var theseCells = $(thisRow).children();
-    // console.log(theseCells);
-    var isReady = $(theseCells[4]).text();
-    // console.log(isReady);
-    if (isReady === 'true') {
-      console.log('to be removed');
-    }
-  }
-*/
-
-  // var isReady = $('.readyfreddy').text();
-  // if (isReady === 'true') {
-  //   console.log($('.readyfreddy').parent().parent().children[5]);
-  // }
-//}
-=======
-    
   }
 }
->>>>>>> 3435005714447d967f93291142c7415af906a038

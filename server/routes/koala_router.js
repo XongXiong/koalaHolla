@@ -23,7 +23,9 @@ router.get('/', function(req, res){
       res.sendStatus(500);
     } else {
       // We connected to the db!!!!! pool -1
-      var queryText = 'SELECT * FROM "koalas";';
+
+      //added ordering
+      var queryText = 'SELECT * FROM "koalas" ORDER BY "id";';
       db.query(queryText, function(errorMakingQuery, result){
         // We have received an error or result at this point
         done(); // pool +1
