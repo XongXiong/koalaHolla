@@ -14,7 +14,16 @@ function f1(){
 } // end doc ready
 
 function deleteKoala() {
-console.log("deleted Koala :(")
+console.log("deleted Koala :(",  $(this).data("id"));
+$.ajax ({
+  type: 'DELETE',
+  url: '/koalas',
+}).done(function(response){
+  console.log(response);
+  getKoalas();
+}).fail(function(error){
+  console.log('Sad Koalas :(');
+});
 }
 
 function markReady() {
