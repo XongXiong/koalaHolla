@@ -106,14 +106,20 @@ function appendKoalas(koalas){
       //added an 's'
       var koala = koalas[i];
       var $trow = $('#viewKoalas').append('<tr></tr>');
+<<<<<<< HEAD
       console.log(koala.ready);
       if (koala.ready == 'false') {
       $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>' + koala.notes + '</td> <td>' + koala.ready + '</td> <td> <button type=button class="markReady transfer btn btn-primary" data-id =" ' + koala.id + '">  Ready for Transfer </button> </td> <td> <button type="button" class= "deleteButton btn btn-danger" data-id= "' + koala.id + '"> Delete </button> </td>');
 
+=======
+      if (koala.ready == false) {
+      $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>' + koala.notes + '</td>  <td> <button type=button class="markReady transfer btn btn-primary" data-id =" ' + koala.id + '">  Ready for Transfer </button> </td> <td> <button type="button" class= "deleteButton btn btn-danger" data-id= "' + koala.id + '"> Delete </button> </td>');
+>>>>>>> 3435005714447d967f93291142c7415af906a038
       } else {
-        $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>' + koala.notes + '</td> <td>' + koala.ready + '</td> <td> </td> <td> <button type="button" class= "deleteButton btn btn-danger" data-id= "' + koala.id + '"> Delete </button> </td>');
+        $($trow).append('<td>' + koala.name + '</td> <td>' + koala.age + '</td> <td>' + koala.gender + '</td> <td>' + koala.notes + '</td>  <td> '+ koala.name +' is ready for Transfer! </td> <td> <button type="button" class= "deleteButton btn btn-danger" data-id= "' + koala.id + '"> Delete </button> </td>');
 
       }
+<<<<<<< HEAD
 
   //hideReady();
 }
@@ -139,3 +145,8 @@ function appendKoalas(koalas){
   //   console.log($('.readyfreddy').parent().parent().children[5]);
   // }
 //}
+=======
+    
+  }
+}
+>>>>>>> 3435005714447d967f93291142c7415af906a038
