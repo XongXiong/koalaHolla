@@ -11,7 +11,7 @@ var config = {
   max: 10, // how many connections at one time
   idleTimeoutMillis: 30000 // Close idle connections to db after
 };
-var poolModule = require('./modules/pool.js');
+var poolModule = require('../modules/pool.js');
 var pool = poolModule;
 
 
